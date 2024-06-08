@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Book Recommendation System</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E8EBE4;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #798071;
+        }
+
+        #book-form {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #B8BACF;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #D2D5DD;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #999AC6;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #798071;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #999AC6;
+        }
+
+        #recommendations {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #B8BACF;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #D2D5DD;
+        }
+
+        #recommendations h2 {
+            margin-top: 0;
+        }
+
+        #recommendations ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #recommendations li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Recommendation System</h1>
+
+    <div id="book-form">
+        <label for="book-genre">Enter your favorite book genre:</label>
+        <input type="text" id="book-genre" placeholder="e.g., Mystery, Science Fiction, Romance">
+        <button onclick="getRecommendations()">Get Recommendations</button>
+    </div>
+
+    <div id="recommendations">
+        <h2>Recommended Books</h2>
+        <ul id="recommended-books"></ul>
+    </div>
+
+    <script>
+        function getRecommendations() {
+            const genre = document.getElementById('book-genre').value.trim().toLowerCase();
+
+            if (!genre) {
+                alert('Please enter a book genre.');
+                return;
+            }
+
+            // Simulated book recommendations based on the entered genre
+            const recommendations = generateRecommendations(genre);
+
+            const recommendationsList = document.getElementById('recommended-books');
+            recommendationsList.innerHTML = '';
+
+            if (recommendations.length === 0) {
+                recommendationsList.innerHTML = '<li>No recommendations available for this genre.</li>';
+            } else {
+                recommendations.forEach(book => {
+                    const li = document.createElement('li');
+                    li.textContent = `${book.title} by ${book.author}`;
+                    recommendationsList.appendChild(li);
+                });
+            }
+        }
+
+        // Simulated book recommendation function (replace this with actual recommendation logic)
+        function generateRecommendations(genre) {
+            const books = [
+                { title: 'The Girl with the Dragon Tattoo', author: 'Stieg Larsson', genre: 'mystery' },
+                { title: 'The Da Vinci Code', author: 'Dan Brown', genre: 'mystery' },
+                { title: 'Dune', author: 'Frank Herbert', genre: 'science fiction' },
+                { title: '1984', author: 'George Orwell', genre: 'dystopian' },
+                { title: 'Pride and Prejudice', author: 'Jane Austen', genre: 'romance' },
+                { title: 'To Kill a Mockingbird', author: 'Harper Lee', genre: 'classics' }
+                // Add more books with different genres
+            ];
+
+            const recommendations = books.filter(book => book.genre === genre);
+            return recommendations;
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
